@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 import IconLabelButtons from "./components/button.components";
 import CheckboxListSecondary from "./components/list.components";
+import Calculation from "./components/calculation.components";
 
 function App() {
   const [checked, setChecked] = useState<string[]>([]);
@@ -41,17 +42,7 @@ function App() {
         <IconLabelButtons checked={checked} handleClick={handleClick} />
       </Stack>
 
-      {flag && (
-        <div>
-          <label>Enter Your SPI </label>
-          <input
-            type="number"
-            placeholder="Enter your SPI"
-            value={input}
-            onChange={(e) => setInput(parseFloat(e.target.value))}
-          />
-        </div>
-      )}
+      {flag && <Calculation input={input} setInput={setInput} />}
     </center>
   );
 }
