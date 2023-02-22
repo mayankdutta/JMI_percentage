@@ -1,16 +1,20 @@
-import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Checkbox from "@mui/material/Checkbox";
-import Avatar from "@mui/material/Avatar";
+import { Dispatch, SetStateAction } from "react";
 
-export default function CheckboxListSecondary({ listArray }: Array<string>) {
-  const [checked, setChecked] = React.useState([1]);
-
-  const handleToggle = (value: number) => () => {
+export default function CheckboxListSecondary({
+  listArray,
+  checked,
+  setChecked,
+}: {
+  listArray: Array<string>;
+  checked: Array<string>;
+  setChecked: Dispatch<SetStateAction<string[]>>;
+}) {
+  const handleToggle = (value: string) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
@@ -44,13 +48,7 @@ export default function CheckboxListSecondary({ listArray }: Array<string>) {
             disablePadding
           >
             <ListItemButton>
-              <ListItemAvatar>
-                <Avatar
-                  alt={`Avatar n°${value + 1}`}
-                  src={`/static/images/avatar/${value + 1}.jpg`}
-                />
-              </ListItemAvatar>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+              <ListItemText id={labelId} primary={`${value}`} />
             </ListItemButton>
           </ListItem>
         );

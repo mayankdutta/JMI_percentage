@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .ul {
   border: 4px solid black;
 
@@ -16,6 +12,10 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.stack {
+  margin: 2rem 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -1,25 +1,58 @@
+import { Stack } from "@mui/system";
+import { useState } from "react";
 import "./App.css";
 import IconLabelButtons from "./components/button.components";
 import CheckboxListSecondary from "./components/list.components";
 
 function App() {
-  let listArray: Array<string> = [
-    " Check your latest Marksheet. ",
-    " Look for the QR Code. ",
+  const [checked, setChecked] = useState<string[]>([]);
+  const [flag, setFlag] = useState<boolean>(false);
+  const [input, setInput] = useState<number>(0);
+
+  const listArray: Array<string> = [
+    " Check your latest Marksheet.",
+    " Look for the QR Code.",
     " It must be on the front page, where your SPI is mentioned.",
-    " Scan the QR Code, It will give the overall SPI till now. ",
-    " to confirm that you have read above steps. ",
+    " Scan the QR Code(use google lens)",
+    " It will give the overall SPI till now.",
   ];
 
-  return (
-    <div className="App">
-      <h1> Jamia % Calculator</h1>
-      <CheckboxListSecondary listArray={listArray} />
-      <IconLabelButtons />
+  function handleClick() {
+    setFlag(true);
+  }
 
-      <label>Enter Your SPI </label>
-      <input />
-    </div>
+  console.log(input);
+
+  return (
+    <center>
+      <h1> Jamia Calculator</h1>
+      <CheckboxListSecondary
+        listArray={listArray}
+        checked={checked}
+        setChecked={setChecked}
+      />
+      <Stack
+        className="stack"
+        direction="row"
+        spacing={2}
+        justifyContent="center"
+      >
+        <p>Have you read all the points? </p>
+        <IconLabelButtons checked={checked} handleClick={handleClick} />
+      </Stack>
+
+      {flag && (
+        <div>
+          <label>Enter Your SPI </label>
+          <input
+            type="number"
+            placeholder="Enter your SPI"
+            value={input}
+            onChange={(e) => setInput(parseFloat(e.target.value))}
+          />
+        </div>
+      )}
+    </center>
   );
 }
 
