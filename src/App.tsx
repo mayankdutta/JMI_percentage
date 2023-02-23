@@ -4,6 +4,8 @@ import "./App.css";
 import IconLabelButtons from "./components/button.components";
 import CheckboxListSecondary from "./components/list.components";
 import Calculation from "./components/calculation.components";
+import { Typography } from "@mui/material";
+import Jamia from "./assets/jamia.png"
 
 function App() {
   const [checked, setChecked] = useState<string[]>([]);
@@ -25,8 +27,13 @@ function App() {
   console.log(input);
 
   return (
-    <center>
-      <h1> Jamia Calculator</h1>
+    <center style={{minHeight: "100vh" }}>
+    <img src={Jamia} height="100px" />
+      <Typography variant="h2"> Jamia Calculator</Typography>
+      <code >
+        formula used: (20x<sup>3</sup> - 380x<sup>2</sup> + 2725x - 1690) / 84
+      </code>
+
       <CheckboxListSecondary
         listArray={listArray}
         checked={checked}
@@ -42,7 +49,9 @@ function App() {
         <IconLabelButtons checked={checked} handleClick={handleClick} />
       </Stack>
 
-      {flag && <Calculation input={input} setInput={setInput} />}
+      {flag && checked.length == 5 && <Calculation input={input} setInput={setInput} />}
+
+
     </center>
   );
 }
