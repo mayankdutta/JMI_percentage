@@ -13,7 +13,7 @@ import Seven from "../assets/new/7.png";
 import Eight from "../assets/new/8.png";
 import Nine from "../assets/new/9.png";
 import Ten from "../assets/new/10.png";
-import Neg from "../assets/new/negative.png";
+import Negative from "../assets/new/negative.png";
 import Extreme from "../assets/new/extreme.png";
 
 export default function Calculation({
@@ -46,7 +46,7 @@ export default function Calculation({
       />
 
       <Typography variant="h4">
-        Your Result: {(result || 0).toFixed(3)}
+        Your Result: {(result || 0).toFixed(3)}%
       </Typography>
 
       {10.0 < input && <img src={Extreme} height="200px" />}
@@ -61,7 +61,7 @@ export default function Calculation({
       {5.5 < input && input <= 6.0 && <img src={Eight} height="200px" />}
       {5.0 < input && input <= 5.5 && <img src={Nine} height="200px" />}
       {4.5 < input && input <= 5.0 && <img src={Ten} height="200px" />}
-      {input <= 4.5 && <img src={Neg} height="200px" />}
+      {1.0 < input && input <= 4.5 && <img src={Negative} height="200px" />}
     </div>
   );
 }

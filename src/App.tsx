@@ -5,7 +5,7 @@ import IconLabelButtons from "./components/button.components";
 import CheckboxListSecondary from "./components/list.components";
 import Calculation from "./components/calculation.components";
 import { Typography } from "@mui/material";
-import Jamia from "./assets/jamia.png"
+import Jamia from "./assets/jamia.png";
 
 function App() {
   const [checked, setChecked] = useState<string[]>([]);
@@ -18,6 +18,7 @@ function App() {
     " It must be on the front page, where your SPI is mentioned.",
     " Scan the QR Code(use google lens)",
     " It will give the overall SPI till now.",
+    " Record it.",
   ];
 
   function handleClick() {
@@ -27,10 +28,10 @@ function App() {
   console.log(input);
 
   return (
-    <center style={{minHeight: "100vh" }}>
-    <img src={Jamia} height="100px" />
+    <center style={{ minHeight: "100vh" }}>
+      <img src={Jamia} height="100px" />
       <Typography variant="h2"> Jamia Calculator</Typography>
-      <code >
+      <code>
         formula used: (20x<sup>3</sup> - 380x<sup>2</sup> + 2725x - 1690) / 84
       </code>
 
@@ -46,12 +47,14 @@ function App() {
         justifyContent="center"
       >
         <p>Have you read all the points? </p>
-        <IconLabelButtons checked={checked} handleClick={handleClick} />
+        <IconLabelButtons
+          checked={checked}
+          handleClick={handleClick}
+          listArray={listArray}
+        />
       </Stack>
 
-      {flag && checked.length == 5 && <Calculation input={input} setInput={setInput} />}
-
-
+      <Calculation input={input} setInput={setInput} />
     </center>
   );
 }
